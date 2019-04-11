@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercice 6</title>
+  </head>
+  <body>
+    <div class="container">
+      <img src="img/image1.jpg" id="image1" />
+      <img src="img/image2.jpg" id="image2" />
+      <img src="img/image3.jpg" id="image3" />
+      <img src="img/image4.jpg" id="image4" />
+      <img src="img/image5.jpg" id="image5" />
+    </div>
+
+    <script type="text/javascript">
+      // Si on met la souris sur un élément de la page alors :
+      document.addEventListener('mouseover', function()
+        {
+          // srcCible prends le src de la cible
+          var srcCible = event.target.src;
+          // Si les 6 derniers caractères ne correspondent (si ce n'est pas l'image alternatif)
+          if (srcCible.slice(-6) != "_2.jpg")
+          {
+            // On modifie le src pour qu'il fasse apparaitre l'image alt
+            event.target.src =  srcCible.replace(/.jpg/g, "_2.jpg");
+          }
+        });
+      // Si on sort la souris d'un élément de la page alors :
+      document.addEventListener('mouseout', function()
+        {
+          // srcCible prends le src de la cible
+          var srcCible = event.target.src;
+          // S'il s'agit de l'image alt
+          if (srcCible.slice(-6) == "_2.jpg")
+          {
+            // On modifie la src pour faire apparaitre l'image d'origine
+            event.target.src =  srcCible.replace(/_2.jpg/g, ".jpg");
+          }
+        });
+    </script>
+  </body>
+</html>
